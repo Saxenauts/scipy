@@ -3303,7 +3303,11 @@ class ncx2_gen(rv_continuous):
     %(example)s
 
     """
+    def _argcheck(self, df, nc):
+        return (df > 0) & (nc >=0)
+
     def _rvs(self, df, nc):
+        print ("df:", df, "nc:", nc)
         return self._random_state.noncentral_chisquare(df, nc, self._size)
 
     def _logpdf(self, x, df, nc):
